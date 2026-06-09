@@ -1,6 +1,6 @@
 product:    sysmlv1-pro
 display:    SysML v1 MCP Bridge — Pro Extension
 jar:        jgs-sysmlv1-pro.jar
-sha256:     4437c68bc99eee9462ff44d23c864beb73b162748d2cf72d9ef47841929c7676
-staged_at:  2026-06-09T11:52:21.358298+00:00
+sha256:     c56cec3a5b2d89142a9d1fe7130f5911d5cce49220bf7363fd3cfc29eaadcb7a
+staged_at:  2026-06-09T14:21:42.535525+00:00
 size_bytes: 8371303
