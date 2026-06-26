@@ -2,31 +2,31 @@
 <!--
   Copyright (c) 2026 JG Systems Consulting Ltd. All Rights Reserved.
   SPDX-License-Identifier: LicenseRef-JGSystemsConsulting-Proprietary
-  JGS brand & design system — dark engineering drafting-document aesthetic.
+  JGS brand & design system, dark engineering drafting-document aesthetic.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SysML v1 MCP Bridge — Pro Extension JAR for CATIA Magic | JGS</title>
-<meta name="description" content="The licensed pro-extension JAR for the JGS SysML v1 MCP Bridge. Loaded by the free base plugin at CATIA Magic startup, it unlocks the write-tier and pro tool set for AI agents — fully local, no cloud.">
+<title>SysML v1 MCP Bridge: Pro Extension JAR for CATIA Magic | JGS</title>
+<meta name="description" content="The licensed pro-extension JAR for the JGS SysML v1 MCP Bridge. Loaded by the free base plugin at CATIA Magic startup, it unlocks the write-tier and pro tool set for AI agents, fully local, no cloud.">
 <meta name="keywords" content="SysML, MBSE, CATIA Magic, Cameo Systems Modeler, MSOSA, MCP, Model Context Protocol, Claude Code, pro extension, write tier, SysML v1, plugin JAR">
 <meta name="robots" content="index, follow">
 <meta name="author" content="JG Systems Consulting Ltd.">
 <link rel="canonical" href="https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="JGS CATIA Magic MCP">
-<meta property="og:title" content="SysML v1 MCP Bridge — Pro Extension JAR">
-<meta property="og:description" content="The licensed pro-extension JAR for the JGS SysML v1 MCP Bridge. Unlocks write-tier and pro tools for AI agents inside CATIA Magic — fully local.">
+<meta property="og:title" content="SysML v1 MCP Bridge: Pro Extension JAR">
+<meta property="og:description" content="The licensed pro-extension JAR for the JGS SysML v1 MCP Bridge. Unlocks write-tier and pro tools for AI agents inside CATIA Magic, fully local.">
 <meta property="og:url" content="https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SysML v1 MCP Bridge — Pro Extension JAR">
+<meta name="twitter:title" content="SysML v1 MCP Bridge: Pro Extension JAR">
 <meta name="twitter:description" content="Licensed pro-extension JAR for the JGS SysML v1 MCP Bridge. Write-tier + pro tools, loaded by the free plugin, fully local.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "JGS SysML v1 MCP Bridge — Pro Extension",
+  "name": "JGS SysML v1 MCP Bridge: Pro Extension",
   "applicationCategory": "DeveloperApplication",
   "applicationSubCategory": "Model-Based Systems Engineering",
   "operatingSystem": "Windows, macOS, Linux",
@@ -157,9 +157,9 @@ footer p { font-size: 0.85rem; color: var(--mute); }
     <p class="label">JG Systems Consulting Ltd. · CATIA Magic MCP</p>
     <h1>The pro extension that turns read-only into read-write.</h1>
     <p class="lede">
-      This is the licensed <strong>pro-extension JAR</strong> for the JGS SysML v1 MCP Bridge — not
+      This is the licensed <strong>pro-extension JAR</strong> for the JGS SysML v1 MCP Bridge, not
       a standalone app. The free base plugin loads it at CATIA Magic startup and, with a valid
-      licence, unlocks the <strong>write-tier and pro tool set</strong>: your AI agent stops just
+      licence, unlocks the <strong>write-tier and pro tool set</strong>. Your AI agent stops just
       reading the model and starts authoring it. Everything stays on your workstation.
     </p>
     <div class="btns">
@@ -169,38 +169,38 @@ footer p { font-size: 0.85rem; color: var(--mute); }
   </section>
 
   <section>
-    <p class="label sec-label">§01 — What this is</p>
+    <p class="label sec-label">§01 · What this is</p>
     <p class="lead-in">
-      A single artifact: <code>jgs-sysmlv1-pro.jar</code>. It has no entry point of its own — the
-      free SysML v1 MCP Bridge plugin discovers and loads it dynamically when CATIA Magic starts.
+      A single artifact: <code>jgs-sysmlv1-pro.jar</code>. It has no entry point of its own.
+      The free SysML v1 MCP Bridge plugin discovers and loads it dynamically when CATIA Magic starts.
       Once loaded against a valid licence, the pro and write-tier tools become available to any
       connected MCP agent through the free bridge.
     </p>
     <div class="grid cols-3" style="margin-top:24px">
-      <div class="cell"><h3>Dynamically loaded</h3><p>The free plugin loads this JAR via <code>URLClassLoader</code> at startup — no separate install of an application, no extra process.</p></div>
-      <div class="cell"><h3>Licence-gated</h3><p>Pro tools activate only with a valid offline licence file. No licence, no write tier — the free read tools still work.</p></div>
+      <div class="cell"><h3>Dynamically loaded</h3><p>The free plugin loads this JAR via <code>URLClassLoader</code> at startup. No separate install of an application, no extra process.</p></div>
+      <div class="cell"><h3>Licence-gated</h3><p>Pro tools activate only with a valid offline licence file. No licence, no write tier, and the free read tools still work.</p></div>
       <div class="cell"><h3>Integrity-verified</h3><p>Ships with a SHA-256 digest in <code>RELEASE-INFO.txt</code> so you can confirm the JAR you load is the one we published.</p></div>
     </div>
   </section>
 
   <section>
-    <p class="label sec-label">§02 — The load chain</p>
+    <p class="label sec-label">§02 · The load chain</p>
     <p class="lead-in">
       The pro JAR sits at the end of a short, deterministic startup sequence. If any link is
-      missing — the free plugin, the JAR, or the licence — it degrades gracefully to the free tools.
+      missing (the free plugin, the JAR, or the licence), it degrades gracefully to the free tools.
     </p>
     <div class="chain" style="margin-top:24px">
-      <div class="step"><span class="num">1</span><div><h3>CATIA Magic starts</h3><p>The free SysML v1 MCP Bridge base plugin loads first. <strong>It must already be installed</strong> — the pro JAR does nothing on its own.</p></div></div>
+      <div class="step"><span class="num">1</span><div><h3>CATIA Magic starts</h3><p>The free SysML v1 MCP Bridge base plugin loads first. <strong>It must already be installed</strong>, because the pro JAR does nothing on its own.</p></div></div>
       <div class="step"><span class="num">2</span><div><h3>Free plugin finds the pro JAR</h3><p>It looks in its <code>jgs-pro/</code> directory and loads <code>jgs-sysmlv1-pro.jar</code> if present.</p></div></div>
       <div class="step"><span class="num">3</span><div><h3>Licence check</h3><p>With a valid licence the pro + write-tier tools register; without one, the bridge stays on free read-only tools.</p></div></div>
     </div>
   </section>
 
   <section id="install">
-    <p class="label sec-label">§03 — Install</p>
+    <p class="label sec-label">§03 · Install</p>
     <p class="lead-in">
       Customers receive this JAR in their licence bundle. Place it in the free plugin's pro
-      directory and restart CATIA Magic. This step runs on your desktop app — an AI agent can copy
+      directory and restart CATIA Magic. This step runs on your desktop app. An AI agent can copy
       the file and verify the digest, but cannot install a host plugin or restart the host for you.
     </p>
     <div class="chain" style="margin-top:24px">
@@ -218,8 +218,8 @@ sha256sum jgs-sysmlv1-pro.jar   <span class="c"># must equal jar_sha256 in RELEA
     <div class="cta">
       <p class="label" style="margin:0 0 12px">Pro tier</p>
       <h2>Let the AI build, not just browse.</h2>
-      <p>The free bridge reads your model. This pro extension lets your agent author and refactor it —
-        create requirements, wire allocations, fix findings, draft diagrams — at the speed you can
+      <p>The free bridge reads your model. This pro extension lets your agent author and refactor it
+        (create requirements, wire allocations, fix findings, draft diagrams) at the speed you can
         describe them, all on your own machine.</p>
       <div class="btns">
         <a class="btn primary" href="https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro">View on GitHub →</a>
@@ -229,7 +229,7 @@ sha256sum jgs-sysmlv1-pro.jar   <span class="c"># must equal jar_sha256 in RELEA
   </section>
 
   <footer>
-    <p>Copyright (c) 2026 JG Systems Consulting Ltd. All Rights Reserved. Proprietary —
+    <p>Copyright (c) 2026 JG Systems Consulting Ltd. All Rights Reserved. Proprietary.
        see <a href="https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro/blob/main/LICENSE">LICENSE</a>.
        Requires the free SysML v1 MCP Bridge base plugin and CATIA Magic / Cameo Systems Modeler. REV 0.1.0.</p>
   </footer>
