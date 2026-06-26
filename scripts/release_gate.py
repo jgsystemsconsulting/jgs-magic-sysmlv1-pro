@@ -21,7 +21,18 @@ REQUIRED = [
     "LICENSE", "COPYRIGHT", "NOTICE", "README.md", "CHANGELOG.md",
     "SECURITY.md", "RELEASE-INFO.txt", ".gitignore",
     "jgs-sysmlv1-pro.jar", "docs/index.html", "docs/.nojekyll",
+    "docs/tiers.html", "docs/faq.html",
 ]
+
+# Human-facing surface that MUST contain no em dash (RR-B-24 / RR-B-28).
+EM_DASH_GLOBS = [
+    "README.md", "CHANGELOG.md", "SECURITY.md",
+    "docs/index.html", "docs/tiers.html", "docs/faq.html",
+]
+
+# Shipped HTML pages MUST publish no price/dollar amount (RR-B-19 / RR-B-30).
+PRICE_RE = re.compile(r"\$[0-9]|/mo\b|per month|pricing", re.IGNORECASE)
+PRICE_GLOBS = ["docs/index.html", "docs/tiers.html", "docs/faq.html"]
 
 # Paths that must never ship.
 FORBIDDEN_PATHS = ["server/", "keygen", "private", ".env"]
@@ -82,6 +93,18 @@ def main() -> int:
         p = ROOT / rel
         if p.exists() and HEADER_SENTINEL not in p.read_text(encoding="utf-8", errors="ignore"):
             fail(f"missing per-file header in {rel}", errors)
+
+    # 5. no em dash in human-facing surface (RR-B-24 / RR-B-28)
+    for rel in EM_DASH_GLOBS:
+        p = ROOT / rel
+        if p.exists() and "—" in p.read_text(encoding="utf-8", errors="ignore"):
+            fail(f"em dash present in human-facing file: {rel}", errors)
+
+    # 6. no price/dollar amount in shipped HTML pages (RR-B-19 / RR-B-30)
+    for rel in PRICE_GLOBS:
+        p = ROOT / rel
+        if p.exists() and PRICE_RE.search(p.read_text(encoding="utf-8", errors="ignore")):
+            fail(f"price/dollar amount in shipped page: {rel}", errors)
 
     # bonus: JAR digest matches RELEASE-INFO.txt
     info = (ROOT / "RELEASE-INFO.txt").read_text(encoding="utf-8", errors="ignore")

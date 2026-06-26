@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2026 JG Systems Consulting Ltd. All Rights Reserved.
+  SPDX-License-Identifier: LicenseRef-JGSystemsConsulting-Proprietary
+  JGS brand & design system, dark engineering drafting-document aesthetic.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Licence tiers for the SysML v1 Pro extension | JGS</title>
+<meta name="description" content="How the Free, Pro, and Enterprise tiers of the SysML v1 MCP Bridge differ. The pro extension JAR unlocks Pro write access. Everything runs locally, no licence server.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="JG Systems Consulting Ltd.">
+<link rel="canonical" href="https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/tiers.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JGS CATIA Magic MCP">
+<meta property="og:title" content="Licence tiers for the SysML v1 Pro extension">
+<meta property="og:description" content="Free, Pro, and Enterprise capabilities for the JGS SysML v1 MCP Bridge. The pro JAR unlocks Pro write access. Fully local.">
+<meta property="og:url" content="https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/tiers.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Licence tiers for the SysML v1 Pro extension">
+<meta name="twitter:description" content="Free, Pro, and Enterprise capabilities for the JGS SysML v1 MCP Bridge. The pro JAR unlocks Pro write access. Fully local.">
+<style>
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-400.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/inter-600.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/jetbrains-mono-400.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/jetbrains-mono-700.woff2') format('woff2'); }
+
+:root {
+  --ink: #0a0a0b; --ink-2: #111113; --ink-3: #16171a; --ink-4: #1e2024;
+  --line: #2a2d33; --line-2: #3a3e46;
+  --mute: #6b7078; --mute-2: #8b9099;
+  --text: #c7ccd3; --text-hi: #e8ebf0;
+  --paper: #f4f2ec; --paper-ink: #0a0a0b;
+  --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --pad-x: clamp(24px, 4vw, 80px); --pad-section: clamp(48px, 6vw, 96px);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--ink); color: var(--mute-2);
+  font-family: var(--sans); font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad-x); }
+a { color: var(--text-hi); }
+h1, h2, h3 { color: var(--text-hi); letter-spacing: -0.02em; font-weight: 600; }
+code, .mono { font-family: var(--mono); }
+
+.label {
+  font-family: var(--mono); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.14em; font-size: 0.6875rem; color: var(--mute);
+}
+
+/* Masthead */
+.masthead { border-bottom: 1px solid var(--line); }
+.masthead .row {
+  display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center;
+  padding: 14px var(--pad-x);
+}
+.masthead .row span { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.12em; color: var(--mute); text-transform: uppercase; }
+.masthead .row span b { color: var(--text); font-weight: 700; }
+.masthead .row .spacer { flex: 1; }
+.masthead .row a { color: var(--mute-2); text-decoration: none; }
+.masthead .row a:hover { color: var(--text-hi); }
+
+/* Section scaffolding */
+section { padding: var(--pad-section) 0; border-bottom: 1px solid var(--line); }
+.sec-label { margin: 0 0 24px; }
+.lead-in { color: var(--text); max-width: 64ch; }
+
+/* Hero */
+.hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0 0 20px; line-height: 1.08; }
+.hero p.lede { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text); max-width: 60ch; margin: 0 0 32px; }
+.btns { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.btn {
+  font-family: var(--mono); font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.06em;
+  text-transform: uppercase; text-decoration: none; padding: 13px 22px; display: inline-flex; gap: 10px;
+}
+.btn.primary { background: var(--paper); color: var(--paper-ink); }
+.btn.ghost { background: transparent; color: var(--text-hi); border: 1px solid var(--line); }
+.btn:hover { transform: translateY(-1px); }
+
+/* Grid-of-cells (hairline gaps) */
+.grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cell { background: var(--ink); padding: 22px 24px; }
+.cell h3 { margin: 0 0 8px; font-size: 1rem; }
+.cell code { font-size: 0.85rem; color: var(--text-hi); }
+.cell p { margin: 6px 0 0; font-size: 0.95rem; color: var(--mute-2); }
+
+/* Chain */
+.chain { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.chain .step { background: var(--ink); padding: 22px 24px; display: flex; gap: 22px; align-items: baseline; }
+.chain .num { font-family: var(--mono); font-weight: 700; font-size: 3rem; line-height: 1; color: var(--line-2); min-width: 2ch; }
+.chain .step h3 { margin: 0 0 4px; }
+.chain .step code { color: var(--text-hi); }
+
+/* Code block */
+pre {
+  background: var(--ink-2); border: 1px solid var(--line); padding: 20px 22px; overflow-x: auto;
+  font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text);
+}
+pre .c { color: var(--mute); }
+
+/* CTA panel */
+.cta { background: var(--ink-2); border: 1px solid var(--line); padding: clamp(28px, 4vw, 44px); }
+.cta h2 { margin: 0 0 10px; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.cta p { color: var(--text); max-width: 58ch; margin: 0 0 24px; }
+
+footer { padding: 40px 0 64px; }
+footer p { font-size: 0.85rem; color: var(--mute); }
+
+:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } .btn:hover { transform: none; } }
+@media (max-width: 860px) {
+  .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; }
+  .masthead .row .spacer { display: none; }
+}
+
+/* Tier + FAQ sub-page additions (same tokens) */
+.tier-tag { font-family: var(--mono); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--mute); }
+.faq { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.faq details { background: var(--ink); padding: 0; }
+.faq summary { padding: 20px 24px; cursor: pointer; color: var(--text-hi); font-weight: 600; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: '+'; font-family: var(--mono); color: var(--mute); margin-right: 14px; }
+.faq details[open] summary::before { content: '−'; }
+.faq details p { margin: 0; padding: 0 24px 22px; color: var(--mute-2); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="row">
+    <span>CLASSIFICATION: <b>PUBLIC</b></span>
+    <span>LICENCE: <b>PROPRIETARY</b></span>
+    <span>DOC-ID: <b>JGS-MCP-V1-PRO-TIERS</b></span>
+    <span>REV <b>0.1.0</b></span>
+    <span class="spacer"></span>
+    <a href="index.html">Overview</a>
+    <a href="tiers.html">Tiers</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro">GitHub &#8594;</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="label">JG Systems Consulting Ltd. &middot; CATIA Magic MCP</p>
+    <h1>Licence tiers</h1>
+    <p class="lede">
+      Tiers are about what your AI agent can do with the live model, not about anything that runs
+      in the cloud. Every install starts at Free, which needs no licence file. This pro extension
+      JAR is the artifact that unlocks the Pro tier, and licence checks happen entirely on your
+      machine (there is no licence server to reach).
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#tiers">Compare tiers &#8594;</a>
+      <a class="btn ghost" href="index.html">Back to overview &#8594;</a>
+    </div>
+  </section>
+
+  <section id="tiers">
+    <p class="label sec-label">&sect;01 &middot; What each tier unlocks</p>
+    <div class="grid cols-3">
+      <div class="cell"><span class="tier-tag">FREE</span><h3>Read &amp; audit</h3><p>Free is read and audit: your agent can query, navigate, audit, and report on the open model. No licence file is required, and no writes are possible at this tier.</p></div>
+      <div class="cell"><span class="tier-tag">PRO</span><h3>Author &amp; edit</h3><p>Pro is author and edit: full write access to create and modify blocks, ports, requirements, relationships, and diagrams through your agent. This pro extension JAR (<code>jgs-sysmlv1-pro.jar</code>) is exactly what delivers Pro, and a valid licence file is required to activate it.</p></div>
+      <div class="cell"><span class="tier-tag">ENTERPRISE</span><h3>Script &amp; scale</h3><p>Enterprise is script and scale: everything in Pro plus dangerous writes and Groovy scripting for power workflows. A valid licence file is required.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <p class="label" style="margin:0 0 12px">Request a licence</p>
+      <h2>Ready for Pro or Enterprise?</h2>
+      <p>To request a Pro or Enterprise licence, contact JG Systems Consulting and we will issue your licence file.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro">View on GitHub &#8594;</a>
+        <a class="btn ghost" href="faq.html">Read the FAQ &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Copyright (c) 2026 JG Systems Consulting Ltd. All Rights Reserved. Proprietary,
+       see <a href="https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro/blob/main/LICENSE">LICENSE</a>.
+       Requires the free SysML v1 MCP Bridge base plugin and CATIA Magic / Cameo Systems Modeler. REV 0.1.0.</p>
+  </footer>
+
+</main>
+</body>
+</html>
