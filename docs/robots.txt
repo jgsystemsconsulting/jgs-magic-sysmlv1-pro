@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/sitemap.xml

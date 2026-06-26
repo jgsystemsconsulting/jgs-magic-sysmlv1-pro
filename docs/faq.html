@@ -4,23 +4,102 @@
   SPDX-License-Identifier: LicenseRef-JGSystemsConsulting-Proprietary
   JGS brand & design system, dark engineering drafting-document aesthetic.
 -->
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1117">
+<meta property="og:locale" content="en_GB">
 <title>SysML v1 Pro extension: FAQ and troubleshooting | JGS</title>
-<meta name="description" content="Answers for the SysML v1 Pro extension: pro tools not appearing, missing base plugin, licence file placement, JAR digest checks, air-gapped operation, and supported CATIA Magic versions.">
-<meta name="robots" content="index, follow">
+<meta name="description" content="Troubleshooting for the SysML v1 Pro extension: pro tools not showing, missing base plugin, licence file placement, JAR digest checks, and air-gapped operation.">
+<meta name="keywords" content="SysML v1, Pro extension, troubleshooting, FAQ, pro tools not appearing, base plugin missing, licence file, SHA-256 digest, JAR mismatch, air-gapped, CATIA Magic versions, MCP Bridge">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="JG Systems Consulting Ltd.">
 <link rel="canonical" href="https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/faq.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="JGS CATIA Magic MCP">
 <meta property="og:title" content="SysML v1 Pro extension: FAQ and troubleshooting">
-<meta property="og:description" content="Troubleshooting the SysML v1 pro extension: missing tools, base plugin, licence detection, digest mismatch, air-gapped operation, prerequisites.">
+<meta property="og:description" content="Troubleshooting for the SysML v1 Pro extension: pro tools not showing, missing base plugin, licence file placement, JAR digest checks, and air-gapped operation.">
 <meta property="og:url" content="https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/faq.html">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SysML v1 Pro extension: FAQ and troubleshooting">
 <meta name="twitter:description" content="Troubleshooting the SysML v1 pro extension: missing tools, base plugin, licence detection, digest mismatch, air-gapped operation, prerequisites.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "I installed the pro extension but the pro tools do not appear. What is wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The pro JAR is loaded by the free base plugin at CATIA Magic startup, so it only takes effect after a full restart. Close CATIA Magic completely and reopen it. If the tools are still missing, confirm the free base plugin is installed and that your licence file is present and valid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "The pro extension seems to be installed, but it silently does nothing. Why?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The pro JAR cannot run on its own. It is loaded dynamically by the free base plugin (the SysML v1 MCP Bridge), so without that base plugin present the JAR is never loaded and nothing happens. Install the free base plugin first, then restart CATIA Magic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where does the licence file go, and what do I do if it is not detected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Place the licence file in the location given with your licence (the bridge reads it locally at startup). If it is not detected, check that the file is the unmodified one we issued, that its name and path match the instructions, and that CATIA Magic has been restarted since you added it. Then confirm Pro is active by checking the licence status reported by the bridge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I get a SHA-256 digest mismatch on the JAR. What does that mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The base plugin verifies the pro JAR against a known SHA-256 digest before loading it. A mismatch means the JAR on disk is not the exact file we published: it is incomplete, modified, or corrupted in transit. Re-download jgs-sysmlv1-pro.jar, verify its SHA-256 against the published value in RELEASE-INFO.txt, and replace the copy on disk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does anything leave my machine? Can I run this air-gapped?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No data leaves your machine. The bridge, the pro JAR, and the licence check all run locally inside CATIA Magic, with no cloud service and no licence server to contact. It works fully air-gapped."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which CATIA Magic versions and prerequisites are required?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You need a supported install of CATIA Magic (Cameo Systems Modeler) with the SysML plugin, the free SysML v1 MCP Bridge base plugin installed, and the matching pro extension JAR for your bridge version. The base plugin and the pro JAR must be from the same release so their digest check lines up. For exact supported versions, see the release notes shipped with your bridge."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Overview",
+      "item": "https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "FAQ",
+      "item": "https://jgsystemsconsulting.github.io/jgs-magic-sysmlv1-pro/faq.html"
+    }
+  ]
+}
+</script>
 <style>
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-400.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/inter-600.woff2') format('woff2'); }
