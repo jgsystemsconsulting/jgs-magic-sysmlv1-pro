@@ -21,7 +21,7 @@ REQUIRED = [
     "LICENSE", "COPYRIGHT", "NOTICE", "README.md", "CHANGELOG.md",
     "SECURITY.md", "RELEASE-INFO.txt", ".gitignore",
     "jgs-sysmlv1-pro.jar", "docs/index.html", "docs/.nojekyll",
-    "docs/tiers.html", "docs/faq.html",
+    "docs/tiers.html", "docs/faq.html", "docs/assets/og.png",
 ]
 
 # Human-facing surface that MUST contain no em dash (RR-B-24 / RR-B-28).
