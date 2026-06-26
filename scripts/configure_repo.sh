@@ -17,7 +17,7 @@ PAGES_URL="https://jgsystemsconsulting.github.io/$REPO/"
 
 echo "==> About panel (description, homepage, topics)"
 gh repo edit "$SLUG" \
-  --description "Licensed pro-extension JAR for the JGS SysML v1 MCP Bridge — unlocks write-tier and pro model tools for AI agents in CATIA Magic." \
+  --description "Licensed pro-extension JAR for the JGS SysML v1 MCP Bridge. Unlocks write-tier and pro model tools for AI agents in CATIA Magic." \
   --homepage "$PAGES_URL"
 gh api -X PUT "repos/$SLUG/topics" \
   -H "Accept: application/vnd.github+json" \
