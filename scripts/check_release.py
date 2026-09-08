@@ -24,7 +24,8 @@ REQUIRED = [
     "LICENSE", "COPYRIGHT", "NOTICE", "README.md", "CHANGELOG.md",
     "SECURITY.md", "RELEASE-INFO.txt", "CITATION.cff", ".gitignore",
     "jgs-sysmlv1-pro.jar", "docs/index.html", "docs/.nojekyll",
-    "docs/tiers.html", "docs/faq.html", "docs/assets/og.png",
+    "docs/tiers.html", "docs/faq.html", "docs/site.css", "docs/assets/og.png",
+    "tests/test_site_structure.py",
     ".github/ISSUE_TEMPLATE/bug_report.yml",
     ".github/ISSUE_TEMPLATE/improvement.yml",
     ".github/ISSUE_TEMPLATE/config.yml",
@@ -55,7 +56,8 @@ FORBIDDEN_CONTENT = [
 
 HEADER_SENTINEL = "Copyright (c) 2026 JG Systems Consulting Ltd."
 # First-party docs that must carry the header. (Vendored/governance text exempt.)
-HEADER_GLOBS = ["README.md", "CHANGELOG.md", "SECURITY.md"]
+HEADER_GLOBS = ["README.md", "CHANGELOG.md", "SECURITY.md",
+                "tests/test_site_structure.py"]
 
 TEXT_SUFFIXES = {".md", ".txt", ".html", ".py", ".sh", ".json", ".yml", ".yaml"}
 

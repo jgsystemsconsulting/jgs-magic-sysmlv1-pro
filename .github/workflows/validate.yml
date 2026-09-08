@@ -27,6 +27,9 @@ jobs:
           done
           exit $fail
 
+      - name: Site structure tests
+        run: python3 -m unittest discover -s tests -q
+
       - name: Version single-source consistency
         run: |
           python3 - <<'PY'
