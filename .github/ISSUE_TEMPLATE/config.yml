@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro/security/advisories/new
+    about: Do not file public issues for vulnerabilities. Use a private security advisory.
+  - name: Free base plugin or bridge defects
+    url: https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-mcp/issues
+    about: Problems with the free SysML v1 MCP Bridge base plugin, its MCP server, or its free tools belong in the free bridge's tracker, not here.

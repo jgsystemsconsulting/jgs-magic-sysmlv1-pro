@@ -3,11 +3,14 @@
 # SPDX-License-Identifier: LicenseRef-JGSystemsConsulting-Proprietary
 """Release gate for jgs-magic-sysmlv1-pro.
 
-Runs four check classes and exits non-zero on any failure (RR-B-15):
+Runs its check classes and exits non-zero on any failure (RR-B-15):
   1. required files present
   2. forbidden paths absent
   3. forbidden content absent (leak sentinels)
   4. per-file headers present on first-party shippable docs (RR-B-03)
+  5. no em dash in the human-facing surface (RR-B-24 / RR-B-28)
+  6. no price/dollar amount in shipped HTML pages (RR-B-19 / RR-B-30)
+  7. JAR digest matches RELEASE-INFO.txt
 """
 from __future__ import annotations
 import hashlib
@@ -19,9 +22,13 @@ ROOT = Path(__file__).resolve().parent.parent
 
 REQUIRED = [
     "LICENSE", "COPYRIGHT", "NOTICE", "README.md", "CHANGELOG.md",
-    "SECURITY.md", "RELEASE-INFO.txt", ".gitignore",
+    "SECURITY.md", "RELEASE-INFO.txt", "CITATION.cff", ".gitignore",
     "jgs-sysmlv1-pro.jar", "docs/index.html", "docs/.nojekyll",
     "docs/tiers.html", "docs/faq.html", "docs/assets/og.png",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/improvement.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/workflows/validate.yml",
 ]
 
 # Human-facing surface that MUST contain no em dash (RR-B-24 / RR-B-28).
@@ -37,12 +44,13 @@ PRICE_GLOBS = ["docs/index.html", "docs/tiers.html", "docs/faq.html"]
 # Paths that must never ship.
 FORBIDDEN_PATHS = ["server/", "keygen", "private", ".env"]
 
-# Content sentinels that must not appear in shipped text files.
+# Content sentinels that must not appear in shipped text files. Assembled from
+# fragments so leak scanners do not match the sentinel list itself (RR-B-14).
 FORBIDDEN_CONTENT = [
-    "CONFIDENTIAL — Not for external distribution",
-    "BEGIN PRIVATE KEY",
-    "BEGIN RSA PRIVATE KEY",
-    "BEGIN OPENSSH PRIVATE KEY",
+    "CONFIDENTIAL — Not for external " + "distribution",
+    " ".join(["BEGIN", "PRIVATE", "KEY"]),
+    " ".join(["BEGIN", "RSA", "PRIVATE", "KEY"]),
+    " ".join(["BEGIN", "OPENSSH", "PRIVATE", "KEY"]),
 ]
 
 HEADER_SENTINEL = "Copyright (c) 2026 JG Systems Consulting Ltd."
@@ -71,14 +79,12 @@ def main() -> int:
                 fail(f"forbidden path present: {hit.relative_to(ROOT)} (matched '{pat}')", errors)
                 break
 
-    # 3. forbidden content (text files only)
-    self_path = Path(__file__).resolve()
+    # 3. forbidden content (text files only; .github/ CI YAML names the
+    #    sentinels it greps for, so that tree is exempt like in audit.py)
     for path in ROOT.rglob("*"):
         if path.is_dir() or path.suffix.lower() not in TEXT_SUFFIXES:
             continue
-        if ".git/" in path.as_posix():
-            continue
-        if path.resolve() == self_path:  # the gate defines the sentinels it scans for
+        if ".git/" in path.as_posix() or ".github/" in path.as_posix():
             continue
         try:
             text = path.read_text(encoding="utf-8", errors="ignore")
@@ -106,7 +112,7 @@ def main() -> int:
         if p.exists() and PRICE_RE.search(p.read_text(encoding="utf-8", errors="ignore")):
             fail(f"price/dollar amount in shipped page: {rel}", errors)
 
-    # bonus: JAR digest matches RELEASE-INFO.txt
+    # 7. JAR digest matches RELEASE-INFO.txt
     info = (ROOT / "RELEASE-INFO.txt").read_text(encoding="utf-8", errors="ignore")
     m = re.search(r"jar_sha256=([0-9a-f]{64})", info)
     jar = ROOT / "jgs-sysmlv1-pro.jar"

@@ -87,9 +87,19 @@ Proprietary. Governed by [`LICENSE`](LICENSE) (JG Systems Consulting Ltd. Propri
 Software Licence). See [`COPYRIGHT`](COPYRIGHT) and [`NOTICE`](NOTICE) for attribution and
 third-party notices.
 
+To request a commercial or academic licence, or if you are unsure which licence you need:
+https://labs.jgsystemsconsulting.com/licensing.html
+
 ## Support
 
-- **Help / questions**: open an issue, or contact JG Systems Consulting Ltd.
-- **Security**: see [`SECURITY.md`](SECURITY.md) (report via a private GitHub security
-  advisory, not email).
+- **Bug in the pro JAR**: open a [bug report](https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-pro/issues/new/choose) (the issue chooser's bug form).
+- **Improvement idea**: the same chooser has an improvement-request form. Tell us the
+  outcome the product blocked and the change you would like.
+- **Free base plugin, MCP server, or free tools**: those belong to the free bridge's own
+  tracker, <https://github.com/jgsystemsconsulting/jgs-magic-sysmlv1-mcp/issues>, not here.
+- **Security**: see [`SECURITY.md`](SECURITY.md). Report via a private GitHub security
+  advisory, never a public issue or email.
+- **Pull requests**: this is a proprietary product, so the repo ships no CONTRIBUTING or
+  PR template and does not accept feature contributions. A small, self-contained fix is
+  welcome as a pull request after you have opened an issue describing it.
 - **Version / history**: see [`CHANGELOG.md`](CHANGELOG.md).

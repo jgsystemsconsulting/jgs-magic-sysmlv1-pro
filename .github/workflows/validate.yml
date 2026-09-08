@@ -1,0 +1,58 @@
+# Copyright (c) 2026 JG Systems Consulting Ltd. All Rights Reserved.
+# SPDX-License-Identifier: LicenseRef-JGSystemsConsulting-Proprietary
+# Release gate for the jgs-magic-sysmlv1-pro distribution (RR-B-15). Self-contained
+# (checkout + python3 stdlib only). Runs on untrusted PRs: read-only perms.
+name: validate
+on:
+  push:
+  pull_request:
+permissions: read-all
+jobs:
+  release-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Release gate script
+        run: python3 scripts/check_release.py
+
+      - name: Forbidden content (leak sentinels)
+        run: |
+          set -e
+          fail=0
+          for s in "Not for external distribution" "BEGIN PRIVATE KEY" "BEGIN OPENSSH PRIVATE KEY"; do
+            if grep -rIl --exclude-dir=.git --exclude-dir=.github "$s" . ; then
+              echo "::error::forbidden content found: $s"; fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Version single-source consistency
+        run: |
+          python3 - <<'PY'
+          import re, sys
+          info = open("RELEASE-INFO.txt", encoding="utf-8").read()
+          m = re.search(r"(?m)^version=(\S+)", info)
+          ver = m.group(1) if m else None
+          errs = []
+          if not ver:
+              errs.append("RELEASE-INFO.txt has no version=")
+          m_tag = re.search(r"(?m)^Tag:\s*v(\S+)", info)
+          if not m_tag or m_tag.group(1) != ver:
+              errs.append(f"RELEASE-INFO.txt Tag: != v{ver!r}")
+          top = None
+          for line in open("CHANGELOG.md", encoding="utf-8", errors="replace"):
+              mm = re.match(r"^##\s*\[?(\d+\.\d+\.\d+)\]?", line.strip())
+              if mm:
+                  top = mm.group(1)
+                  break
+          if top != ver:
+              errs.append(f"CHANGELOG top {top!r} != version {ver!r}")
+          cff = open("CITATION.cff", encoding="utf-8").read()
+          m2 = re.search(r'(?m)^version:\s*"([^"]+)"', cff)
+          if not m2 or m2.group(1) != ver:
+              errs.append(f"CITATION.cff version != {ver!r}")
+          if errs:
+              print("\n".join(errs)); sys.exit(1)
+          print(f"version OK: {ver}")
+          PY

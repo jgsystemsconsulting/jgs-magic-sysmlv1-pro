@@ -1,0 +1,65 @@
+name: Bug report
+description: The pro JAR did not load, or a pro/write-tier tool misbehaved
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "For security vulnerabilities, use the advisory link on the chooser - do not file them here."
+  - type: input
+    id: version
+    attributes:
+      label: Pro JAR version
+      description: Copy Version from RELEASE-INFO.txt (this release: 0.1.0).
+    validations:
+      required: true
+  - type: input
+    id: base-plugin
+    attributes:
+      label: Free base plugin version
+      description: The free SysML v1 MCP Bridge base plugin must be installed; the pro JAR does nothing without it.
+    validations:
+      required: true
+  - type: input
+    id: host-app
+    attributes:
+      label: CATIA Magic / Cameo version and OS
+      description: Product name and version, plus your operating system.
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: MCP agent (if the problem shows up in an agent)
+      options: ["Not applicable", "Claude Code", "Codex", "Cursor", "Gemini", "Other"]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened
+      description: Paste any log output with licence keys removed.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Before submitting
+      options:
+        - label: I removed any licence keys, file paths, or credentials from this report.
+          required: true
