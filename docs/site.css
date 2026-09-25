@@ -40,6 +40,8 @@ code, .mono { font-family: var(--mono); }
 .masthead .row span { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.12em; color: var(--mute); text-transform: uppercase; }
 .masthead .row span b { color: var(--text); font-weight: 700; }
 .masthead .row .spacer { flex: 1; }
+.masthead .row .brand { display: inline-flex; align-items: center; }
+.masthead .row .brand img { display: block; }
 .masthead .row a { color: var(--mute-2); text-decoration: none; }
 .masthead .row a:hover { color: var(--text-hi); }
 
