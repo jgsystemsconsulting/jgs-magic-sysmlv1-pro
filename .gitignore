@@ -6,3 +6,6 @@ __pycache__/
 Thumbs.db
 .playwright-mcp/
 .ruff_cache/
+
+.superpowers/
+docs/superpowers/
